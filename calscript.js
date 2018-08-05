@@ -19,17 +19,19 @@ function divide(x, y){
 }
 
 function operate(x, y, op) {
+  x = Number(x);
+  y = Number(y);
   if (op == "+") {
-    console.log(add(x,y))
+    return add(x,y);
   }
   else if (op == "-") {
-    console.log(sub(x,y))
+    return sub(x,y);
   }
   else if (op == "*") {
-    console.log(multiply(x,y))
+    return multiply(x,y);
   }
   else if (op == "/") {
-    console.log(divide(x,y))
+    return divide(x,y);
   }
 }
 
@@ -130,7 +132,7 @@ function display() {
   })
 
   equal.addEventListener("click", () => {
-    console.log("result");
+    dis.innerHTML = operate(disValue[0],disValue[2], disValue[1]);
   })
 }
 
