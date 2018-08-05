@@ -13,13 +13,17 @@
 .calculator-wrapper div {
   border: 1px solid black;
   text-align: center;
+  font-size: 15pt;
 }
 
-#result {
+#display {
   grid-column-start: 1;
   grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 3;
+  background-color: grey;
+  font-weight: bold;
+  font-size: 30pt;
 }
 
 #equal {
@@ -27,14 +31,21 @@
   grid-column-end: 5;
   grid-row-start: 8;
   grid-row-end: 11;
+  background-color: yellow;
+  font-weight: bold;
 }
 
 #clear {
   grid-row-start:3;
   grid-row-end: 7;
+  background-color: blue;
+  padding-top:60px;
+  font-weight: bold;
 }
 
 #zero {
   grid-column-start:2;
   grid-column-end:5;
+  background-color: green;
+  font-weight: bold;
 }
