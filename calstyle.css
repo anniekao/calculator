@@ -2,9 +2,39 @@
   display:grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4,1fr);
+  grid-gap: 15px;
+}
+
+.calculator-wrapper {
+  margin: 0 auto;
+  width: 400px;
 }
 
 .calculator-wrapper div {
   border: 1px solid black;
   text-align: center;
+}
+
+#result {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+#equal {
+  grid-column-start:1;
+  grid-column-end: 5;
+  grid-row-start: 8;
+  grid-row-end: 11;
+}
+
+#clear {
+  grid-row-start:3;
+  grid-row-end: 7;
+}
+
+#zero {
+  grid-column-start:2;
+  grid-column-end:5;
 }
