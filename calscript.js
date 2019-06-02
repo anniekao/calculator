@@ -47,10 +47,13 @@ function evaluate(tokens) {
 
     values.push(operate(val1, val2, op));
   }
+  if (isNaN(values[0])){
+    return "Invalid";
+  } else if (!isFinite(values[0])){
+    return "Does not compute!";
+  }
   return values[0];
 }
-
-evaluate("12+7-5*3");
 
 // Takes in two values and an operator and returns the calculated result
 function operate(val1, val2, op){
@@ -175,7 +178,15 @@ function display() {
   equal.addEventListener("click", () => {
     endResult = evaluate(exp);
     dis.innerHTML = endResult;
+    exp = "";
   });
+
+  del.addEventListener("click", () => {
+    exp = exp.slice(0, exp.length-1);
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
+
 }
 
 function checkSize(exp){

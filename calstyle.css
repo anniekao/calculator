@@ -22,26 +22,34 @@
   grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 3;
-  background-color: grey;
+  background-color: lightblue;
   font-weight: bold;
-  font-size: 30pt;
+  font-size: 25pt;
 }
 
 #equal {
   grid-column-start:4;
   grid-row-start: 4;
-  grid-row-end: 8;
+  grid-row-end: 7;
   background-color: yellow;
   font-weight: bold;
 }
 
 #clear {
   background-color: blue;
-  padding-top:60px;
   font-weight: bold;
 }
 
 #zero {
   background-color: green;
   font-weight: bold;
+}
+
+#del {
+  background-color: blueviolet;
+  font-weight: bold;
+}
+
+#plus, #sub, #multiply, #divide {
+  background-color: orchid;
 }

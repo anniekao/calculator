@@ -11,11 +11,13 @@ Using fundamental JS knowledge and applying it to build an HTML calculator
 - Javascript, HTML/CSS
 - Regular Expressions! I was able to use them to sort the arithmetic expression into operands and operators.
 - Debugging using VS Code and where to insert breakpoints. Helped me to figure out what was wrong with the evaluate function when sorting tokens into their respective arrays.
+- Adding keydown events using Javascript
 
 # To Do
 
 - Fix the CSS and make it look more sleek
 - Fix calculator layout
+- Add keyboard functionality
 
 # Resources
 https://www.geeksforgeeks.org/expression-evaluation/
