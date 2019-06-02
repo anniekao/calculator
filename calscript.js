@@ -1,148 +1,159 @@
-function add(x, y){
-  let result = x + y;
-  return result;
+function evaluate(tokens) {
+  // stack for operand values
+  var values = [];
+  // stack for operators
+  var ops = [];
+  // variable for while loop
+  var i = 0;
+
+
+  while (i < tokens.length) {
+    if (/\d/.test(tokens[i])){
+      var val = 0;
+        while ( i < tokens.length && /\d/.test(tokens[i])){
+          val += tokens[i];
+          i += 1;
+        }
+      values.push(parseInt(val));
+    } else if (/\D/.test(tokens[i])){
+      ops.push(tokens[i]);
+      i += 1;
+    } 
+  }
+
 }
 
-function sub(x, y){
-  let result = x - y;
-  return result;
-}
-
-function multiply(x, y){
-  let result = x*y;
-  return result;
-}
-
-function divide(x, y){
-  let result = x/y;
-  return result;
-}
-
-function operate(x, y, op) {
-  x = Number(x);
-  y = Number(y);
+function operate(val1, val2, op){
   if (op == "+") {
-    return add(x,y);
+    return val1 + val2;
   }
   else if (op == "-") {
-    return sub(x,y);
+    return val1 - val2;
   }
   else if (op == "*") {
-    return multiply(x,y);
+    return val1 * val2;
   }
   else if (op == "/") {
-    return divide(x,y);
+    return val1 / val2;
   }
 }
 
 function display() {
-  disValue = "";
-  dis = document.getElementById("display");
+  let exp = "";
+  let endResult;
+  let dis = document.getElementById("display");
   let sub = document.getElementById("sub");
   let multiply = document.getElementById("multiply");
   let divide = document.getElementById("divide");
 
   clear.addEventListener("click", () => {
-    disValue = "";
+    exp = "";
+    endResult = "";
     dis.innerHTML = "0";
-  })
+  });
 
   one.addEventListener("click", () => {
-    disValue += "1";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "1";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   two.addEventListener("click", () => {
-    disValue += "2";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "2";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   three.addEventListener("click", () => {
-    disValue += "3";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "3";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   four.addEventListener("click", () => {
-    disValue += "4";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "4";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   five.addEventListener("click", () => {
-    disValue += "5";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "5";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   six.addEventListener("click", () => {
-    disValue += "6";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "6";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   seven.addEventListener("click", () => {
-    disValue += "7";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "7";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   eight.addEventListener("click", () => {
-    disValue += "8";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "8";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   nine.addEventListener("click", () => {
-    disValue += "9";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "9";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   zero.addEventListener("click", () => {
-    disValue += "0";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "0";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
+
+  decimal.addEventListener("click", () => {
+    exp += ".";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   plus.addEventListener("click", () => {
-    disValue += "+";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "+";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   sub.addEventListener("click", () => {
-    disValue += "-";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "-";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   multiply.addEventListener("click", () => {
-    disValue += "*";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "*";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   divide.addEventListener("click", () => {
-    disValue += "/";
-    disValue = checkSize(disValue);
-    dis.innerHTML = disValue;
-  })
+    exp += "/";
+    disValue = checkSize(exp);
+    dis.innerHTML = exp;
+  });
 
   equal.addEventListener("click", () => {
-    dis.innerHTML = operate(disValue[0],disValue[2], disValue[1]);
-  })
+    endResult = evaluate(exp);
+    dis.innerHTML = endResult;
+  });
 }
 
-function checkSize(disValue){
-  disValue = disValue.toString();
+function checkSize(exp){
   let resetNum = "";
-  if (disValue.length > 12) {
+  if (exp.length > 12) {
     resetNum = disValue[disValue.length-1];
     return resetNum;
-    } return disValue;
+    } return exp;
 }
 
 
