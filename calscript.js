@@ -28,8 +28,8 @@ function evaluate(tokens) {
       values.push(parseInt(val));
     } else if (/\D/.test(tokens[i])){
       while(precedence(ops[ops.length-1]) >= precedence(tokens[i])){
-        val1 = values.pop();
         val2 = values.pop();
+        val1 = values.pop();
         op = ops.pop();
 
         values.push(operate(val1, val2, op));
@@ -41,8 +41,8 @@ function evaluate(tokens) {
 
   // loop to apply operators to values, calling operate function and returning a result
   while (ops.length !== 0){
-    val1 = values.pop();
     val2 = values.pop();
+    val1 = values.pop();
     op = ops.pop();
 
     values.push(operate(val1, val2, op));
@@ -50,7 +50,7 @@ function evaluate(tokens) {
   return values[0];
 }
 
-evaluate("5*66+9");
+evaluate("12+7-5*3");
 
 // Takes in two values and an operator and returns the calculated result
 function operate(val1, val2, op){
