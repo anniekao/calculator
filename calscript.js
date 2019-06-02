@@ -1,3 +1,14 @@
+function precedence(op){
+  if (op == "+" || op == "-"){
+    return 1;
+  } else if (op == "*" || op == "/"){
+    return 2;
+  }
+}
+
+
+// Takes in an expression, sorts it into two stacks -- one for operands/values and one for operators
+// It should then return the result of the expression, taking into account PEMDAS/operator precedence
 function evaluate(tokens) {
   // stack for operand values
   var values = [];
@@ -6,7 +17,7 @@ function evaluate(tokens) {
   // variable for while loop
   var i = 0;
 
-
+  // loop to sort tokens into operands and operators
   while (i < tokens.length) {
     if (/\d/.test(tokens[i])){
       var val = 0;
@@ -16,13 +27,32 @@ function evaluate(tokens) {
         }
       values.push(parseInt(val));
     } else if (/\D/.test(tokens[i])){
+      while(precedence(ops[ops.length-1]) >= precedence(tokens[i])){
+        val1 = values.pop();
+        val2 = values.pop();
+        op = ops.pop();
+
+        values.push(operate(val1, val2, op));
+      }
       ops.push(tokens[i]);
       i += 1;
     } 
   }
 
+  // loop to apply operators to values, calling operate function and returning a result
+  while (ops.length !== 0){
+    val1 = values.pop();
+    val2 = values.pop();
+    op = ops.pop();
+
+    values.push(operate(val1, val2, op));
+  }
+  return values[0];
 }
 
+evaluate("5*66+9");
+
+// Takes in two values and an operator and returns the calculated result
 function operate(val1, val2, op){
   if (op == "+") {
     return val1 + val2;
